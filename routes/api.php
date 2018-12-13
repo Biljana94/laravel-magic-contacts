@@ -14,6 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
+//ovo da globalno da nam prihvati request koji saljemo i da nemamo CORS gresku, nije najbolji nacin
+//ovde nemamo potpunu kontrolu kao sa cors-om
+// header('Access-Control-Allow-Origin: *'); //bilo koja aplikacija sa bilo kojeg domena moze da pristupi nasoj aplikaciji, mozemo umesto * navoditi domene koje hocemo da pustimo na nas domen
+// header('Access-Control-Allow-Mathods: PUT,POST,GET,DELETE,OPTIONS'); //koje metode koristimo
+// header('Access-Control-Allow-Headers: Content-Type,Accept,Origin'); //tip podataka
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
