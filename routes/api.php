@@ -20,6 +20,16 @@ use Illuminate\Http\Request;
 // header('Access-Control-Allow-Mathods: PUT,POST,GET,DELETE,OPTIONS'); //koje metode koristimo
 // header('Access-Control-Allow-Headers: Content-Type,Accept,Origin'); //tip podataka
 
+
+//moramo pisati namespace jer nam se AuthController nalazi u Auth folderu
+Route::group([
+    'namespace' => 'Auth',
+    'prefix' => 'auth',
+], function() {
+    Route::post('/login', 'AuthController@login');
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
